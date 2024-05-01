@@ -35,8 +35,9 @@ function Navbar() {
           / Find Doctor
         </Link>
       </div>
+
       <button className="bg-blue-500 px-5 py-2 rounded-3xl text-white">
-        Login
+        Employee Login
       </button>
     </div>
   );
