@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import Service from "./pages/Service.jsx";
 import { ThemeProvider } from "@material-tailwind/react";
+import Employee from "./pages/Employee.jsx";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   {
     path: "/service",
     element: <Service />,
+  },
+  {
+    path: "/employee",
+    element: <Employee />,
   },
 ]);
 

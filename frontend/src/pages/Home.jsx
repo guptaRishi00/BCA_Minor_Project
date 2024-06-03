@@ -20,6 +20,7 @@ function Home() {
         </div>
         <HeroSection />
       </div>
+
       <Footer />
     </>
   );

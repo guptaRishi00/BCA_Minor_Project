@@ -1,7 +1,6 @@
 import React from "react";
 import {
   Card,
-  CardHeader,
   CardBody,
   CardFooter,
   Typography,
@@ -9,7 +8,7 @@ import {
   Checkbox,
   Button,
 } from "@material-tailwind/react";
-
+import { Link } from "react-router-dom";
 export default function HeroCard() {
   return (
     <>
@@ -22,13 +21,15 @@ export default function HeroCard() {
           </div>
         </CardBody>
         <CardFooter className="pt-0 ">
-          <Button
-            variant="filled"
-            fullWidth
-            className="shadow-none bg-blue-500"
-          >
-            Log In
-          </Button>
+          <Link to="/employee">
+            <Button
+              variant="filled"
+              fullWidth
+              className="shadow-none bg-blue-500 hover:shadow-none"
+            >
+              Employee Log In
+            </Button>
+          </Link>
           <Typography variant="small" className="mt-6 flex justify-center">
             Don&apos;t have an account?
             <Typography
