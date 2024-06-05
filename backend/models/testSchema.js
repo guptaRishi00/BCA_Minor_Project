@@ -4,18 +4,31 @@ const Schema = mongoose.Schema;
 
 const TestSchema = new Schema(
   {
-    username: String,
-    contactNumber: Number,
-    age: String,
-    gender: String,
-    tests: [
-      {
-        testName: String,
-        testDate: Date,
-      },
-    ],
+    username: {
+      type: String,
+      required: true,
+    },
+    contactNumber: {
+      type: Number,
+      required: true,
+    },
+    age: {
+      type: String,
+      required: true,
+    },
+    gender: {
+      type: String,
+      required: true,
+    },
+    tests: {
+      type: String,
+      required: true,
+    },
+    price: {
+      type: String,
+    },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("test", TestSchema);
+module.exports = mongoose.model("Test", TestSchema);

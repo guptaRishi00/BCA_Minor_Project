@@ -14,20 +14,20 @@ const getAllTest = async (req, res) => {
 
 //POST A Test
 const postATest = async (req, res) => {
-  const createPayload = req.body;
-  const parsedPayload = createTest.safeParse(createPayload);
-
-  if (!parsedPayload.success) {
-    res.status(411).json({ message: "You Sent Wrong Inputs" });
-    return;
-  }
+  const username = req.body.username;
+  const contactNumber = req.body.contactNumber;
+  const age = req.body.age;
+  const gender = req.body.gender;
+  const tests = req.body.tests;
+  const amount = req.body.amount;
 
   const test = await Test.create({
-    username: createPayload.username,
-    contactNumber: createPayload.contactNumber,
-    age: createPayload.age,
-    gender: createPayload.gender,
-    tests: createPayload.tests,
+    username: username,
+    contactNumber: contactNumber,
+    age: age,
+    gender: gender,
+    tests: tests,
+    amount: amount,
   });
 
   res.status(200).json(test);

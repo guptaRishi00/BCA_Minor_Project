@@ -7,6 +7,7 @@ import Home from "./pages/Home.jsx";
 import Service from "./pages/Service.jsx";
 import { ThemeProvider } from "@material-tailwind/react";
 import Employee from "./pages/Employee.jsx";
+import { TestContextProvider } from "./context/testContext.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,10 +26,12 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router}>
-      <ThemeProvider>
-        <App />
-      </ThemeProvider>
-    </RouterProvider>
+    <TestContextProvider>
+      <RouterProvider router={router}>
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
+      </RouterProvider>
+    </TestContextProvider>
   </React.StrictMode>
 );

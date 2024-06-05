@@ -6,14 +6,13 @@ const testSchema = zod.object({
 });
 const createTest = zod.object({
   username: zod.string(),
-  contactNumber: zod.string().max(11), // Change to string and max length 10
+  contactNumber: zod.string(),
   age: zod.string(),
   gender: zod.string(),
-  tests: zod.array(testSchema),
 });
 
 const signin = zod.object({
-  username: zod.string().min(1, { message: "This field is required" }),
+  username: zod.string(),
   password: zod.string(),
 });
 
