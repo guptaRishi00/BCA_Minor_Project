@@ -27,6 +27,10 @@ const TestSchema = new Schema(
     price: {
       type: String,
     },
+    employee_id: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );

@@ -8,6 +8,9 @@ import Service from "./pages/Service.jsx";
 import { ThemeProvider } from "@material-tailwind/react";
 import Employee from "./pages/Employee.jsx";
 import { TestContextProvider } from "./context/testContext.jsx";
+import SignupForm from "./components/SignupForm.jsx";
+import LoginForm from "./components/LoginForm.jsx";
+import { AuthContextProvider } from "./context/AuthContext.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,16 +25,26 @@ const router = createBrowserRouter([
     path: "/employee",
     element: <Employee />,
   },
+  {
+    path: "/signup",
+    element: <SignupForm />,
+  },
+  {
+    path: "/login",
+    element: <LoginForm />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <TestContextProvider>
-      <RouterProvider router={router}>
-        <ThemeProvider>
-          <App />
-        </ThemeProvider>
-      </RouterProvider>
-    </TestContextProvider>
+    <AuthContextProvider>
+      <TestContextProvider>
+        <RouterProvider router={router}>
+          <ThemeProvider>
+            <App />
+          </ThemeProvider>
+        </RouterProvider>
+      </TestContextProvider>
+    </AuthContextProvider>
   </React.StrictMode>
 );

@@ -7,8 +7,10 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { useTestContext } from "../hooks/useTestContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 function CheckoutForm() {
+  const { employee } = useAuthContext();
   const { test, dispatch } = useTestContext();
   const [username, setName] = useState("");
   const [contactNumber, setNumber] = useState("");
@@ -21,6 +23,11 @@ function CheckoutForm() {
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
 
+    if (!employee) {
+      setError("You Must Be Logged In");
+      return;
+    }
+
     const details = { username, contactNumber, age, gender, tests, price };
     const detailsString = JSON.stringify(details);
 
@@ -31,6 +38,7 @@ function CheckoutForm() {
         headers: {
           "Content-Type": "application/json",
           "Content-Length": detailsString.length.toString(), // Add Content-Length header
+          Authorization: `Bearer ${employee.token}`,
         },
       });
 

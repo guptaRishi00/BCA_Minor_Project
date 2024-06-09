@@ -1,8 +1,20 @@
 import React from "react";
 import logo from "../assets/logo.svg";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 function Navbar() {
+  const { employee } = useAuthContext();
+  const navigate = useNavigate();
+  const handleSubmit = () => {
+    if (employee) {
+      navigate("/employee");
+    }
+    if (!employee) {
+      navigate("/login");
+    }
+  };
   return (
     <div className="sticky top-0 z-10 bg-white py-5 px-6 flex items-center justify-between">
       <div className="flex items-center gap-2">
@@ -36,7 +48,10 @@ function Navbar() {
         </Link>
       </div>
 
-      <button className="bg-blue-500 px-5 py-2 rounded-3xl text-white">
+      <button
+        className="bg-blue-500 px-5 py-2 rounded-3xl text-white"
+        onClick={handleSubmit}
+      >
         Employee Login
       </button>
     </div>

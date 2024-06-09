@@ -4,7 +4,10 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const labTest = require("./routes/TestRoutes");
 const employees = require("./routes/employeeRoutes");
+const cors = require("cors");
 
+// Use cors middleware
+app.use(cors());
 app.use(express.json());
 app.use("/laboratory/", labTest);
 app.use("/employees/", employees);

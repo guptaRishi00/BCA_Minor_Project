@@ -9,27 +9,32 @@ import {
   Button,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
-import { useAuthContext } from "../hooks/useAuthContext";
+import logo from "../assets/logo.svg";
+import { useLogin } from "../hooks/useLogin";
 import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext";
 
-export default function HeroCard() {
+export default function SignupForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { employee } = useAuthContext();
+  const { login, error, isLoading } = useLogin();
   const navigate = useNavigate();
+  const { employee } = useAuthContext();
 
-  const handleNavigation = () => {
-    if (employee) {
-      navigate("/employee");
-    }
-    if (!employee) {
-      navigate("/login");
-    }
+  const handleClick = async (e) => {
+    await login(username, password);
   };
 
   return (
-    <>
-      <Card className="w-96">
+    <div className="flex flex-col items-center mt-20 gap-10">
+      <Link to="/">
+        <div className="flex items-center gap-2 ">
+          <img src={logo} alt="logo" className="h-8" />
+          <p className="text-blue-500 font-semibold">LabXpert</p>
+        </div>
+      </Link>
+
+      <Card className="w-96 ">
         <CardBody className="flex flex-col gap-4">
           <Input
             label="Email"
@@ -53,13 +58,13 @@ export default function HeroCard() {
             variant="filled"
             fullWidth
             className="shadow-none bg-blue-500 hover:shadow-none"
-            onClick={handleNavigation}
+            onClick={handleClick}
           >
-            Employee Log In
+            Employee Login
           </Button>
 
           <Typography variant="small" className="mt-6 flex justify-center">
-            Don&apos;t have an account?
+            Don't have an account?
             <Typography
               as="a"
               href="#signup"
@@ -72,6 +77,6 @@ export default function HeroCard() {
           </Typography>
         </CardFooter>
       </Card>
-    </>
+    </div>
   );
 }
