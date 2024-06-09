@@ -52,7 +52,7 @@ function Employee() {
           </Typography>
           {test?.map((detail) => (
             <HistoryCard
-              key={detail._id}
+              id={detail._id}
               name={detail.username}
               number={detail.contactNumber}
               age={detail.age}

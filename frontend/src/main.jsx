@@ -11,6 +11,7 @@ import { TestContextProvider } from "./context/testContext.jsx";
 import SignupForm from "./components/SignupForm.jsx";
 import LoginForm from "./components/LoginForm.jsx";
 import { AuthContextProvider } from "./context/AuthContext.jsx";
+import DetailsPage from "./components/DetailsPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <LoginForm />,
+  },
+  {
+    path: "/details/:id",
+    element: <DetailsPage />,
   },
 ]);
 
