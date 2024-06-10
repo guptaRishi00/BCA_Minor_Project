@@ -13,7 +13,7 @@ router.use(requireAuth);
 router.get("/", getAllTest);
 
 //GET A Single Test
-router.get("/details/:id", getTestById);
+router.get("/:id", getTestById);
 
 //POST A Test
 router.post("/", postATest);
